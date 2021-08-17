@@ -40,7 +40,6 @@ import LightBox from "../components/LightBox.vue";
 import API from "../utils/API"
 export default {
     name: "PrizeDetail",
-    emits: ["updatePrizeQuantity"],
     data() {
         return {
             prize: null
@@ -49,13 +48,15 @@ export default {
     components: {
         LightBox
     },
-    mounted () {
+    created () {
         this.getPrize();
     },
     methods: {
         async redeemPrize() {
             const quantity = this.prize.quantity - 1;
-            this.$emit('updatePrizeQuantity', this.$route.params.id, quantity);
+            await API.updatePrizeById(this.$route.params.id, {
+                quantity
+            });
             this.$refs.prizeLight.closeModal();
             this.getPrize();
         },

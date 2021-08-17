@@ -9,7 +9,7 @@
 
 <script>
 import PrizeCard from "../components/PrizeCard.vue";
-import API from "../utils/API";
+import rewardApi from "../utils/rewardApi";
 export default {
     name: "PrizeList",
     components: {
@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         async getPrizes() {
-            const {data} = await API.getAllPrizes();
+            const {data} = await rewardApi.getAllPrizes();
             this.prizes = data;
         }
     }

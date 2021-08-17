@@ -37,7 +37,7 @@
 </template>
 <script>
 import LightBox from "../components/LightBox.vue";
-import API from "../utils/API"
+import rewardApi from "../utils/rewardApi"
 export default {
     name: "PrizeDetail",
     data() {
@@ -54,7 +54,7 @@ export default {
     methods: {
         async redeemPrize() {
             const quantity = this.prize.quantity - 1;
-            await API.updatePrizeById(this.$route.params.id, {
+            await rewardApi.updatePrizeById(this.$route.params.id, {
                 quantity
             });
             this.$refs.prizeLight.closeModal();
@@ -64,7 +64,7 @@ export default {
             this.$refs.prizeLight.openModal()
         },
         async getPrize() {
-            const {data} = await API.getPrizeById(this.$route.params.id)
+            const {data} = await rewardApi.getPrizeById(this.$route.params.id)
             this.prize = data;
         },
         goBackToPrizes() {

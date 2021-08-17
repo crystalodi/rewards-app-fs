@@ -14,10 +14,10 @@
     <div class="prize-detail-container">
         <div class="card app-card prize-card" v-if="prizeFound">
             <div class="row">
-                <div class="col-4">
+                <div class="col-xl-4 col-md-6 col-12">
                     <img :src="pexelPhoto" class="img-fluid" v-if="pexelPhoto"/>
                 </div>
-                <div class="col-8">
+                <div class="col-xl-8 col-md-6 col-12">
                     <div class="card-body">
                         <div class="card-title">
                             <h5>{{prize.name}}</h5>
@@ -94,6 +94,8 @@ export default {
         display: flex;
         align-content: center;
         justify-content: center;
+        margin-top: 40px;
+
     }
     .redeem-this {
         background-color:#ffce0a !important;

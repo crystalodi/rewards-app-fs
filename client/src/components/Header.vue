@@ -1,6 +1,6 @@
 <template>
     <div class="secondary-header">
-        <h1>Rewards</h1>
+        <h1><b>Rewards</b></h1>
     </div>
 </template>
 
@@ -15,5 +15,6 @@ export default {
         text-align: center;
         background: #0274bb;
         color: white;
+        padding: 40px;
     }
 </style>

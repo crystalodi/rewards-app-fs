@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <p class="text-center">Here is the full list of prizes that you can win.</p>
+    <div class="prize-list">
+        <p class="text-center prize-list-header">Here is the full list of prizes that you can win.</p>
         <div class="row" v-if="prizes">
             <PrizeCard v-for="prize of prizes" :key="prize._id" :prize="prize"/>
         </div>
@@ -31,3 +31,12 @@ export default {
     }
 }
 </script>
+
+<style>
+    .prize-list {
+        margin-top: 40px;
+    }
+    .prize-list-header {
+        margin-bottom: 40px;
+    }
+</style>

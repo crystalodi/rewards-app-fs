@@ -13,6 +13,16 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/:id", async (req, res) => {
+    try {
+        const reward = await Rewards.findById(req.params.id);
+        res.status(200).json(reward)
+    } catch (error) {
+        console.error(error)
+        res.status(500)
+    }
+})
+
 router.put("/:id", async (req, res) => {
     const {id} = req.params;
     try {

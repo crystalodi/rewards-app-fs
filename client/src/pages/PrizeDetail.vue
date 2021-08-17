@@ -1,6 +1,6 @@
 <template>
     <div>
-    <LightBox ref="prizeLight">
+    <LightBox ref="prizeLight" v-if="prizeFound">
         <template v-slot:light-box-header>
             <h5>Redeem Prize</h5>
       </template>
@@ -37,21 +37,34 @@
 </template>
 <script>
 import LightBox from "../components/LightBox.vue";
+import API from "../utils/API"
 export default {
     name: "PrizeDetail",
-    props: ["prizes"],
     emits: ["updatePrizeQuantity"],
+    data() {
+        return {
+            prize: null
+        }
+    },
     components: {
         LightBox
     },
+    mounted () {
+        this.getPrize();
+    },
     methods: {
-        redeemPrize() {
-            console.log("emit", this.$route.params.id);
-            this.$emit('updatePrizeQuantity', this.$route.params.id);
+        async redeemPrize() {
+            const quantity = this.prize.quantity - 1;
+            this.$emit('updatePrizeQuantity', this.$route.params.id, quantity);
             this.$refs.prizeLight.closeModal();
+            this.getPrize();
         },
         confirmRedeemPrize() {
             this.$refs.prizeLight.openModal()
+        },
+        async getPrize() {
+            const {data} = await API.getPrizeById(this.$route.params.id)
+            this.prize = data;
         },
         goBackToPrizes() {
             this.$router.push({
@@ -60,9 +73,6 @@ export default {
         }
     },
     computed: {
-        prize() {
-            return this.prizes?.find(prize => prize.id === this.$route.params.id)
-        },
         prizeFound() {
             return !!this.prize;
         }

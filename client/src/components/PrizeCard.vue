@@ -19,7 +19,7 @@ export default {
     props: ["prize"],
     methods: {
         goToRedeem() {
-            this.$router.push({ name: "PrizeDetail", params: { id: this.prize.id }})
+            this.$router.push({ name: "PrizeDetail", params: { id: this.prize._id }})
         }
     },
 }

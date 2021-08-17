@@ -12,6 +12,7 @@
 
 import Header from "./components/Header.vue"
 import Footer from "./components/Footer.vue"
+import API from "./utils/API";
 
 export default {
   name: 'App',
@@ -24,20 +25,19 @@ export default {
     Header,
     Footer
   },
-  created () {
+  mounted () {
     this.getPrizes();
   },
   methods: {
-    getPrizes() {
-      // this.prizes = prizes;
+    async getPrizes() {
+      const {data} = await API.getAllPrizes();
+      this.prizes = data;
     },
-    updatePrize(prizeId) {
-      console.log(prizeId);
-      // this.prizes.forEach(prize => {
-      //   if (prize.id === prizeId) {
-      //     prize.quantity = prize.quantity - 1;
-      //   }
-      // })
+    async updatePrize(prizeId, quantity) {
+      const {data} = await API.updatePrizeById(prizeId, {
+        quantity
+      });
+      return data;
     }
   },
 }

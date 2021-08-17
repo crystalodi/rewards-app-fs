@@ -16,6 +16,10 @@ const RewardSchema = new Schema({
     quantity: {
         type: Number,
         required: true
+    },
+    pexel_id: {
+        type: Number,
+        required: true
     }
 });
 

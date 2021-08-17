@@ -15,7 +15,7 @@
         <div class="card app-card prize-card" v-if="prizeFound">
             <div class="row">
                 <div class="col-4">
-                    <img :src="prize.image_url" class="img-fluid"/>
+                    <img :src="pexelPhoto" class="img-fluid" v-if="pexelPhoto"/>
                 </div>
                 <div class="col-8">
                     <div class="card-body">
@@ -38,18 +38,21 @@
 <script>
 import LightBox from "../components/LightBox.vue";
 import rewardApi from "../utils/rewardApi"
+import pexelApi from "../utils/pexelApi";
 export default {
     name: "PrizeDetail",
     data() {
         return {
-            prize: null
+            prize: null,
+            pexelPhoto: null
         }
     },
     components: {
         LightBox
     },
-    created () {
-        this.getPrize();
+    async created () {
+        await this.getPrize();
+        await this.getPexelPhoto();
     },
     methods: {
         async redeemPrize() {
@@ -71,7 +74,12 @@ export default {
             this.$router.push({
                 path: "/"
             });
-        }
+        },
+        async getPexelPhoto() {
+            const {src} = await pexelApi.getImageByPexelId(this.prize.pexelId);
+            this.pexelPhoto = src.original;
+         
+        },
     },
     computed: {
         prizeFound() {

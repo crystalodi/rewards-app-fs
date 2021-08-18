@@ -99,6 +99,7 @@ export default {
     }
     .redeem-this {
         background-color:#ffce0a !important;
+        margin-bottom: 10px;
     }
     .redeem-this:hover {
         background-color: #ffd324;

@@ -25,8 +25,8 @@ export default {
     },
     methods: {
         async getPrizes() {
-            const {data} = await rewardApi.getAllPrizes();
-            this.prizes = data;
+            this.prizes = await rewardApi.getAllPrizes();
+            console.log(this.prizes);
         }
     }
 }

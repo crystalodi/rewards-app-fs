@@ -1,13 +1,16 @@
 import axios from "axios"
 
 export default {
-    getAllPrizes() {
-        return axios.get("/api/rewards");
+    async getAllPrizes() {
+        const {data} = await axios.get("/api/rewards");
+        return data;
     },
-    getPrizeById(id) {
-        return axios.get(`/api/rewards/${id}`)
+    async getPrizeById(id) {
+        const {data} = await axios.get(`/api/rewards/${id}`);
+        return data;
     },
-    updatePrizeById(id, query) {
-        return axios.put(`/api/rewards/${id}`, query)
+    async updatePrizeById(id, query) {
+        const {data} = await axios.put(`/api/rewards/${id}`, query)
+        return data;
     }
 }

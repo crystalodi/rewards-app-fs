@@ -67,8 +67,8 @@ export default {
             this.$refs.prizeLight.openModal()
         },
         async getPrize() {
-            const {data} = await rewardApi.getPrizeById(this.$route.params.id)
-            this.prize = data;
+            this.prize = await rewardApi.getPrizeById(this.$route.params.id)
+            console.log(this.prize);
         },
         goBackToPrizes() {
             this.$router.push({

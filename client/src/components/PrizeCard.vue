@@ -27,9 +27,8 @@ export default {
     },
     methods: {
         async getPexelPhoto() {
-            const {src} = await pexelApi.getImageByPexelId(this.prize.pexelId);
+            const {src} = await pexelApi.getImageByPexelId(this.prize.pexelId)
             this.pexelPhoto = src.landscape;
-         
         },
         goToRedeem() {
             this.$router.push({ name: "PrizeDetail", params: { id: this.prize._id }})

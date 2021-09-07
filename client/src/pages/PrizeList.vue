@@ -1,7 +1,7 @@
 <template>
-    <div class="prize-list">
-        <p class="text-center prize-list-header">Here is the full list of prizes that you can win.</p>
-        <div class="row" v-if="prizes">
+    <div class="prize-list-container">
+        <p class="prize-list-header">Here is the full list of prizes that you can win.</p>
+        <div class="prize-list-grid" v-if="prizes">
             <PrizeCard v-for="prize of prizes" :key="prize._id" :prize="prize"/>
         </div>
     </div>
@@ -26,17 +26,24 @@ export default {
     methods: {
         async getPrizes() {
             this.prizes = await rewardApi.getAllPrizes();
-            console.log(this.prizes);
         }
     }
 }
 </script>
 
-<style>
-    .prize-list {
-        margin-top: 40px;
+<style lang="scss">
+    .prize-list-container {
+        margin-top: 2.5rem;
+        padding-bottom: 2.5rem;
     }
     .prize-list-header {
-        margin-bottom: 40px;
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+    .prize-list-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+
     }
 </style>

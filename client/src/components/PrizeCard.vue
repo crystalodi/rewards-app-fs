@@ -1,13 +1,8 @@
 <template>
-    <div class="col-xl-4 col-md-6 col-12">
-        <div class="card prize-card mb-5">
-            <img class="card-img-top" v-bind:src="pexelPhoto" v-if="pexelPhoto"/>
-            <div class="card-body text-center">
-                <div class="card-title mb-5">
-                    <b>Win {{prize.name}}</b>
-                </div>
-                <button class="app-button redeem-button" @click="goToRedeem()">Redeem ></button>
-            </div>
+    <div class="card">
+        <img class="card-img" v-bind:src="pexelPhoto" v-if="pexelPhoto"/>
+        <div class="card-title">
+            <h4>Win {{prize.name}}</h4>
         </div>
     </div>
 </template>
@@ -36,16 +31,19 @@ export default {
     },
 }
 </script>
-<style>
-    image {
-        width: 100%;
-    }
-    .redeem-button {
-        background-color:#ffce0a;
-        margin:10px;
-    }
-    .redeem-button:hover {
-        background-color: #ffd324;
+<style lang="scss">
+    .card {
+        display:flex;
+        flex-direction: column;
+        background-color: $white;
+        .card-img {
+            width: 100%;
+            display:block;
+        }
+        .card-title {
+            text-align: center;
+            padding: 1rem;
+        }
     }
 </style>
 

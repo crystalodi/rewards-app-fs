@@ -1,37 +1,46 @@
 <template>
   <div>
-    <Header/>
+    <header>
+      <h1>Rewards</h1>
+    </header>
     <div class="container">
       <router-view></router-view>
     </div>
-    <Footer/>
+    <footer>
+      <p>Terms and Conditions | Privacy Policy</p>
+    </footer>
   </div>
 </template>
 
 <script>
 
-import Header from "./components/Header.vue"
-import Footer from "./components/Footer.vue"
-
 export default {
-  name: 'App',
-  components: {
-    Header,
-    Footer
-  }
+  name: 'App'
 }
 </script>
-<style>
-  .app-button {
-    color:black;
-    border:none;
-    padding:7px 30px 7px 30px;
-    font-size: 12px;
-    border-radius: 20px;
+<style lang="scss">
+  header {
+    background: $primaryblue;
+    text-align: center;
+    color: $white;
+    padding: 3.75rem;
+    h1 {
+      font-weight: 700;
+    }
   }
-  .prize-card {
-      border: 0!important;
-      box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+
+  footer {
+    background: $footerbg;
+    text-align: center;
+    color: $white;
+    padding: 2.5rem;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 .5rem;
+    overflow: hidden;
   }
 </style>
 

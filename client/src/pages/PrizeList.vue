@@ -33,8 +33,7 @@ export default {
 
 <style lang="scss">
     .prize-list-container {
-        margin-top: 2.5rem;
-        padding-bottom: 2.5rem;
+        padding: 3.125rem 1.875rem;
     }
     .prize-list-header {
         margin-bottom: 2.5rem;

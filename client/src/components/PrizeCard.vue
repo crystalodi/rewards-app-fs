@@ -36,13 +36,13 @@ export default {
         display:flex;
         flex-direction: column;
         background-color: $white;
+        line-height: 1.5;
         .card-img {
             width: 100%;
             display:block;
         }
         .card-title {
             text-align: center;
-            padding: 1rem;
         }
     }
 </style>

@@ -3,9 +3,7 @@
     <header>
       <h1>Rewards</h1>
     </header>
-    <div class="container">
       <router-view></router-view>
-    </div>
     <footer>
       <p>Terms and Conditions | Privacy Policy</p>
     </footer>
